@@ -6,11 +6,12 @@ version: '2'
 services:
   proxy:
     build:
-      context: .
+      context: . # location of the Dockerfile e.g (current directory)
       dockerfile: nginx.Dockerfile
+    image: nginx-custom # name image nginx-custom
     ports:
       - '80:80'
   web:
     image: httpd
     volumes:
-      - ./html:/usr/local/apache2/htdocs/
+      - ./html:/usr/local/apache2/htdocs/  # mount source files in the apache server 
