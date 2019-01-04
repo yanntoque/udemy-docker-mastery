@@ -63,6 +63,18 @@ t7yslmh9bjye        redis.1             redis:3.2           node3               
     - on frontend and backend networks
     - 1 replica
 
+```
+root@node1:~# docker service create --name worker --network backend --network frontend --replicas 1 dockersamples/examplevotingapp_worker
+bun2j1gob89f8cxe8b0d0m55n
+overall progress: 1 out of 1 tasks 
+1/1: running   [==================================================>] 
+verify: Service converged 
+
+root@node1:~# docker service ps worker 
+ID                  NAME                IMAGE                                          NODE                DESIRED STATE       CURRENT STATE            ERROR               PORTS
+l6a3uwni2hk2        worker.1            dockersamples/examplevotingapp_worker:latest   node2               Running             Running 28 seconds ago           
+```
+
 - db
     - postgres:9.4
     - one named volume needed, pointing to /var/lib/postgresql/data
