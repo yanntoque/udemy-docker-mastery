@@ -69,6 +69,17 @@ t7yslmh9bjye        redis.1             redis:3.2           node3               
     - on backend network
     - 1 replica
 
+```
+root@node1:~# docker service create --name db --network backend --mount type=volume,source=db-data,target=/var/lib/postgresql/data --replicas 1 postgres:9.4
+rvdklewdi1aze67fungbsdd8n
+overall progress: 1 out of 1 tasks 
+1/1: running   [==================================================>] 
+verify: Service converged 
+
+root@node1:~# docker service ps db 
+ID                  NAME                IMAGE               NODE                DESIRED STATE       CURRENT STATE           ERROR               PORTS
+ncb1j6w86kgq        db.1                postgres:9.4        node1               Running             Running 2 minutes ago   
+```
 - result
     - dockersamples/examplevotingapp_result:before
     - web app that shows results
