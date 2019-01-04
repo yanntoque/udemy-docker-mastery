@@ -23,6 +23,21 @@ lka27drtj6bz0r94q3jwhjszo
     - on frontend network
     - 2+ replicas of this container
 
+```
+docker service create --name vote --network frontend -p 80:80 --replicas 3 dockersamples/examplevotingapp_vote:before
+
+root@node1:~# docker service create --name vote --network frontend -p 80:80 --replicas 3 dockersamples/examplevotingapp_vote:before 
+nzxvi72chi9b9xuchfs76vbmi
+overall progress: 3 out of 3 tasks 
+1/3: running   [==================================================>] 
+2/3: running   [==================================================>] 
+3/3: running   [==================================================>] 
+verify: Service converged 
+root@node1:~# docker service ls
+ID                  NAME                MODE                REPLICAS            IMAGE                                        PORTS
+nzxvi72chi9b        vote                replicated          3/3                 dockersamples/examplevotingapp_vote:before   *:80->80/tcp
+
+```
 - redis
     - redis:3.2
     - key/value storage for incoming votes
