@@ -99,3 +99,15 @@ ncb1j6w86kgq        db.1                postgres:9.4        node1               
     - so run on a high port of your choosing (I choose 5001), container listens on 80
     - on backend network
     - 1 replica
+
+```
+root@node1:~# docker service create --name result -p 5001:80 --network backend --replicas 1  dockersamples/examplevotingapp_result:before
+45g2i4o1ze32tefr3kutdew3f
+overall progress: 1 out of 1 tasks 
+1/1: running   [==================================================>] 
+verify: Service converged 
+
+root@node1:~# docker service ps result 
+ID                  NAME                IMAGE                                          NODE                DESIRED STATE       CURRENT STATE            ERROR               PORTS
+kaasf5vizxs2        result.1            dockersamples/examplevotingapp_result:before   node1               Running             Running 27 seconds ago                       
+```
