@@ -45,6 +45,17 @@ nzxvi72chi9b        vote                replicated          3/3                 
     - on frontend network
     - 1 replica NOTE VIDEO SAYS TWO BUT ONLY ONE NEEDED
 
+```
+root@node1:~# docker service create --name redis --network frontend --replicas 1 redis:3.2
+bbvejrbqaoi427ace5k5sayqe
+overall progress: 1 out of 1 tasks 
+1/1: running   [==================================================>] 
+verify: Service converged 
+root@node1:~# docker service ps redis
+ID                  NAME                IMAGE               NODE                DESIRED STATE       CURRENT STATE            ERROR               PORTS
+t7yslmh9bjye        redis.1             redis:3.2           node3               Running             Running 17 seconds ago                       
+```
+
 - worker
     - dockersamples/examplevotingapp_worker
     - backend processor of redis and storing results in postgres
